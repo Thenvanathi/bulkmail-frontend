@@ -55,41 +55,69 @@ function App() {
     })
   }
   return (
-    <div className="">
-      <div className="bg-blue-950 text-white text-center">
-        <h1 className="text-2xl font-medium px-5 py-3">BulkMail</h1>
+    <div className="min-h-screen flex flex-col bg-gradient-to-r from-gray-800 via-gray-900 to-black">
+  {/* Header */}
+  <div className="bg-opacity-30 backdrop-blur-lg text-white text-center py-6 shadow-xl mx-4 rounded-xl">
+    <h1 className="text-5xl font-bold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">BulkMail</h1>
+    <p className="mt-2 text-lg font-light">Send Emails to Multiple Recipients in a Flash</p>
+  </div>
+
+  {/* Info Section */}
+  <div className="bg-opacity-40 backdrop-blur-lg text-white text-center py-4 mx-4 rounded-xl shadow-xl">
+    <h2 className="text-xl font-semibold">Powering Your Business with Efficient Email Campaigns</h2>
+  </div>
+
+  {/* Main Section */}
+  <div className="flex-grow flex flex-col items-center justify-center px-4 py-8 gap-6">
+    <div className="w-full max-w-3xl bg-opacity-20 backdrop-blur-lg rounded-3xl shadow-xl p-10 flex flex-col items-center gap-8">
+      
+      <h3 className="text-4xl font-semibold text-white">Compose Your Email</h3>
+
+      {/* Email Textarea Section */}
+      <div className="w-full flex flex-col items-center gap-4">
+        <textarea 
+          value={msg}
+          onChange={handlemsg}
+          className="w-full h-48 p-6 border-2 border-purple-400 rounded-2xl focus:outline-none focus:ring-4 focus:ring-purple-600 resize-none backdrop-blur-lg bg-opacity-40 text-white placeholder-gray-300 transition-all duration-300"
+          placeholder="Type your email message here..."
+        ></textarea>
+
+        <p className="text-white font-light text-sm mt-2">Be concise and clear in your message to make a greater impact!</p>
       </div>
 
-      <div className="bg-blue-800 text-white text-center">
-        <h1 className="font-medium px-5 py-3">We Can Help Your Business With Sending Multiple Emails At Once</h1>
+      {/* File Upload Section */}
+      <div className="w-full flex flex-col items-center gap-6">
+        <label className="w-full flex flex-col items-center justify-center p-8 border-2 border-dashed border-purple-400 rounded-lg cursor-pointer hover:bg-purple-200 transition backdrop-blur-lg bg-opacity-30 hover:bg-opacity-50">
+          <input type="file" onChange={handlefile} className="hidden" />
+          <span className="text-white font-semibold text-lg">Drag & Drop or Click to Upload CSV</span>
+          <span className="text-sm text-purple-200 mt-2">Upload your CSV with email addresses</span>
+        </label>
+        <p className="text-white text-md">Total Emails: <span className="text-purple-400">{emailList.length}</span></p>
       </div>
 
-      <div className="bg-blue-600 text-white text-center">
-        <h1 className="font-medium px-5 py-3">Drag And Drop</h1>
+      {/* Send Button Section */}
+      <div className="flex flex-col items-center gap-6">
+        <button 
+          onClick={send}
+          className="bg-purple-700 hover:bg-purple-800 transition text-white font-semibold py-3 px-8 rounded-full shadow-xl hover:scale-105 transform duration-200 ease-in-out"
+        >
+          {status ? "Sending..." : "Send Email"}
+        </button>
       </div>
-
-      <div className="bg-blue-400 flex flex-col items-center text-black px-5 py-3 ">
-        <textarea  value={msg} onChange={handlemsg} className="w-[80%] h-32 outline px-2 border border-black rounded-md bg-white"placeholder="Enter The Email Text............"></textarea>
-        <div>
-      <input type="file" onChange={handlefile} className="file:bg-white file:text-black file:border file:border-gray-300 file:px-4 file:py-2 file:rounded file:mr-4
-             border-4 border-white border-dashed py-4 px-4 mt-5 mb-5"/>
     </div>
+  </div>
 
-    <p>Total Emails In The File : {emailList.length}</p>
+  {/* Footer */}
+  <div className="bg-opacity-40 backdrop-blur-lg text-center text-white py-4 mx-4 rounded-xl shadow-xl">
+    <p>Secure, Reliable, and Fast Email Delivery</p>
+  </div>
 
-    <button onClick={send} className="bg-blue-950 py-2 px-2 text-white font-medium rounded-md w-fit mt-2">{status?"Sending.........":"Send"}</button>
-  
-      </div>
+  <div className="bg-opacity-40 backdrop-blur-lg text-center text-white py-4 mx-4 rounded-xl shadow-xl">
+    <p>© 2025 BulkMail Inc. All rights reserved.</p>
+  </div>
+</div>
 
-      <div className="bg-blue-300 text-white text-center p-8">
-        
-      </div>
 
-      <div className="bg-blue-200 text-white text-center p-8">
-        
-      </div>
-
-    </div>
   )
 }
 
